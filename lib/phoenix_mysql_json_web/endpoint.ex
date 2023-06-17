@@ -20,7 +20,7 @@ defmodule PhoenixMysqlJsonWeb.Endpoint do
     at: "/",
     from: :phoenix_mysql_json,
     gzip: false,
-    only: ~w(assets fonts images favicon.ico robots.txt)
+    only: ~w(assets fonts images favicon.ico robots.txt uploads)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

@@ -7,14 +7,29 @@
     id="gallery-form"
     phx-target={@myself}
     phx-change="validate"
-    phx-submit="save">
-  
-    <%= label f, :name %>
-    <%= text_input f, :name %>
-    <%= error_tag f, :name %>
-  
+    phx-submit="save"
+  >
+    <%= label(f, :name) %>
+    <%= text_input(f, :name) %>
+    <%= error_tag(f, :name) %>
+
+    <%= label(f, :images) %>
+    <%= live_file_input(@uploads.images) %>
+
+    <%= for entry <- @uploads.images.entries do %>
+      <%= live_img_preview(entry, style: "max-width: 200px; max-height: 200px;") %>
+      <button
+        type="button"
+        phx-click="cancel-upload"
+        phx-value-ref={entry.ref}
+        phx-target={@myself}
+      >
+        Cancel
+      </button>
+    <% end %>
+
     <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
+      <%= submit("Save", phx_disable_with: "Saving...") %>
     </div>
   </.form>
 </div>
